@@ -156,8 +156,9 @@ class AVLTree:
         left_child.parent = parent
         node.parent = left_child
         node.left = left_child.right
+        if node.left is not None:
+            node.left.parent = node
         left_child.right = node
-        node.left.parent = node
 
     def height(self, root: Node) -> int:
         if root is None:
@@ -177,7 +178,7 @@ class AVLTree:
 
 def main():
     tree = AVLTree()
-    for i in range(10):
+    for i in range(10, 1, -1):
         tree += Node(i)
     print(tree.inorder_traversal(tree.root))
     print(tree.preorder_traversal(tree.root))
