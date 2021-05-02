@@ -17,4 +17,7 @@ Some implementations of data structures or algorithms
     <li>
         AVL tree
     </li>
+    <li>
+        Min heap
+    </li>
 </ul>
