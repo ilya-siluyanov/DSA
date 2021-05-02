@@ -130,7 +130,7 @@ class AVLTree:
         parent = node.parent  # type: Node
         right_child = node.right  # type: Node
         if parent is not None:
-            if parent.left is node:
+            if parent.left == node:
                 parent.left = right_child
             else:
                 parent.right = right_child
@@ -147,7 +147,7 @@ class AVLTree:
         parent = node.parent  # type: Node
         left_child = node.left  # type: Node
         if parent is not None:
-            if parent.left is node:
+            if parent.left == node:
                 parent.left = left_child
             else:
                 parent.right = left_child
