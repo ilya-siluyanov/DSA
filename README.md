@@ -14,4 +14,7 @@ Some implementations of data structures or algorithms
             <li>Implementation with O(|V||E|^2) time complexity</li>
         </ol>
     </li>
+    <li>
+        AVL tree
+    </li>
 </ul>
