@@ -76,7 +76,7 @@ class AVLTree:
     def __init__(self):
         self.root = None
 
-    def __add__(self, new_node: Node) -> None:
+    def __add__(self, new_node: Node):
         if self.root is None:
             self.root = new_node
             return self
@@ -107,12 +107,12 @@ class AVLTree:
         grandparent = parent.parent
         if grandparent is None:
             return
-        while grandparent not in (self.root, None):
+        while grandparent is not None:
             if abs(self.height(grandparent.left) - self.height(grandparent.right)) > 1:
                 self.balance(current, parent, grandparent)
+            current = parent
+            parent = grandparent
             grandparent = grandparent.parent
-            parent = parent.parent
-            current = current.parent
 
     def balance(self, current: Node, parent: Node, grandparent: Node):
         if parent == grandparent.left and current == parent.left:  # right rotation
