@@ -22,7 +22,11 @@ def get_augmenting_path(source: int, sink: int) -> List[int]:
             if not used[to] and value > 0:
                 parent[to] = v
                 used[to] = True
+                if to == sink:
+                    break
                 q.append(to)
+        if parent[sink] != -1:
+            break
     if parent[sink] == -1:
         return []
     else:
