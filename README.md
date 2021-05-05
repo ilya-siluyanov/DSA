@@ -17,14 +17,12 @@ Some implementations of data structures or algorithms
     <li>
         AVL tree
     </li>
-
     <li>
         Red-black tree
         <ol>
         <li>Insertion</li>
         </ol>
     </li>
-    
     <li>
         Min heap
     </li>
