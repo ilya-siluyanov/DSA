@@ -60,27 +60,70 @@ class RedBlackTree:
         #case 1: uncle is red too
         #case 2: uncle is black, new_node is right child
         #case 3: similar to c.2, but new_node is left child
-        if new_node.parent.parent.left is new_node.parent: #new_node is a left child
-          uncle = new_node.parent.parent.right
+        grandparent = new_node.parent.parent
+        if grandparent.left is new_node.parent: #new_node is a left child
+          uncle = grandparent.right
           if uncle.color == Color.RED:  #case 1
             uncle.color = Color.BLACK
             new_node.parent.color = Color.BLACK
-            new_node.parent.parent.color = Color.RED
-            new_node = new_node.parent.parent
+            grandparent.color = Color.RED
+            new_node = grandparent
           else:
             if new_node.parent.right is new_node:  #case 2
-              new_node = new_node.parent
-              self.left_rotation(new_node)
+              self.left_rotation(new_node.parent) #new_node is in new_node.parent place 
             new_node.color = Color.BLACK
-            new_node.parent = Color.RED
-            new_node = new_node.parent
-            self.right_rotation(new_node)
+            new_node.parent.color = Color.RED
+            self.right_rotation(new_node.parent)
         else: #new_node is a right child
-          pass
+          uncle = grandparent.left
+          if uncle.color == Color.RED:  #case 1
+            uncle.color = Color.BLACK
+            new_node.parent.color = Color.BLACK
+            grandparent.color = Color.RED
+            new_node = grandparent
+          else:
+            if new_node.parent.left is new_node:
+              self.right_rotation(new_node.parent)
+            new_node.color = Color.BLACK
+            new_node.parent.color = Color.RED
+            self.left_rotation(new_node.parent)
+
+
+    #1. Left substree of the right child becomes right subtree of the node
+    #2. a parent of the node becomes the parent of the right child
+    #3. right child becomes a parent for a node
     def left_rotation(self, node):
-      pass
+      right_child = node.left
+      node.right = right_child.left
+      if right_child.left is not self.null_node:
+        right_child.left.parent = node
+      right_child.parent = node.parent
+      if node.parent is self.null_node:
+        self.root = right_child
+      else:
+        if node is node.parent.left:
+          node.parent.left = right_child
+        else:
+          node.parent.right = right_child
+      right_child.left = node
+      node.parent = right_child
+
     def right_rotation(self, node):
-      pass
+      left_child = node.left
+      node.left = left_child.right
+      if left_child.right is not self.null_node:
+        left_child.right.parent = node
+      left_child.parent = node.parent
+      if node.parent is self.null_node:
+        self.root = left_child
+      else:
+        if node.parent.left is node:
+          node.parent.left = left_child
+        else:
+          node.parent.right = left_child
+      left_child.right = node
+      node.parent = left_child
+
 
 
         
