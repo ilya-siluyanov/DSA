@@ -83,7 +83,9 @@ class RedBlackTree:
           new_node = grandparent
         else:
           if new_node.parent.right is new_node:  #case 2
-            self.left_rotation(new_node.parent) #new_node is in new_node.parent place 
+            self.left_rotation(new_node.parent)  #new_node is in new_node.parent place
+          else:
+            new_node = new_node.parent
           new_node.color = Color.BLACK
           new_node.parent.color = Color.RED
           self.right_rotation(new_node.parent)
@@ -174,10 +176,11 @@ class RedBlackTree:
 
 def main():
   tree = RedBlackTree()
-  for i in range(1, 10):
+  for i in range(10, 0,-1):
     tree.insert(i)
-
-  print(str(tree))
+    print(i)
+    print(str(tree))
+    print()
 
 
 if __name__ == '__main__':
