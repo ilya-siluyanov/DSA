@@ -1,5 +1,6 @@
-Some implementations of data structures or algorithms
-
+<h1>
+    Python implementation of data structures and algorithms: BST, Red-black tree, AVL tree, Min heap, Ford-Fulkerson algorithm   
+</h1>
 <ul>
     <li>
         Binary search tree
